@@ -56,7 +56,7 @@ const services = [
 const testimonials = [
   {
     quote:
-      "Dr. Jianxun Zhou is awesome; very professional, respectful, and honest. He listens to your needs. He took my workers' comp case and did a great job. I highly recommend him.",
+      "Dr. Jianxun Zhou is awesome; very professional, respectful, and honest. He listens to your needs. He took my workers' comp case and did a great job. I highly recommend him. May God bless him.",
   },
   {
     quote:
@@ -64,19 +64,31 @@ const testimonials = [
   },
   {
     quote:
+      "Dr. Zhou seemed genuinely concerned about my problem and was eager to help. I have confidence in him. This was my first visit and it went very well. I hope the next doctor who replaces him is just as good — I'm going to miss him. Very professional. I also loved the staff; everyone was so kind.",
+  },
+  {
+    quote:
+      "I was very impressed with Dr. Zhou and his assistants. He thoroughly explained his thoughts about my back pain.",
+  },
+  {
+    quote:
+      "I can't say enough great things about my care. I'm forever grateful for the opportunity to meet Dr. Zhou and his wonderful staff — no bad experiences at all. Thank you all!",
+  },
+  {
+    quote:
       "I had been in pain for 18 months, and Dr. Zhou pinpointed the cause. He showed me on the X-rays and an old CT scan, then gave me options for treatment. What a relief to finally get help.",
   },
   {
     quote:
-      "Dr. Zhou seemed genuinely concerned about my problem and was eager to help. I have confidence in him. Very professional. I also loved the staff; everyone was so kind.",
-  },
-  {
-    quote:
-      "I can't say enough great things about my care. I'm forever grateful for the opportunity to meet Dr. Zhou and his wonderful staff — no bad experiences at all.",
-  },
-  {
-    quote:
       "Dr. Zhou is a very considerate and dedicated doctor. He's polite and truly makes you feel that he cares about getting you better. I highly recommend him.",
+  },
+  {
+    quote:
+      "The doctor, nurses, and entire staff are incredibly friendly and compassionate. It's clear that Dr. Zhou cares deeply about his patients' comfort.",
+  },
+  {
+    quote:
+      "He reassured me and helped make the procedure less painful — a very comforting experience. Great clinic, staff, and doctors!",
   },
 ];
 
