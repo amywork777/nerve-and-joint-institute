@@ -17,6 +17,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Left: language toggle */}
+        <button
+          onClick={() => setLanguage(language === "en" ? "es" : "en")}
+          className="flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
+          aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
+        >
+          {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
+        </button>
+
+        {/* Center: logo */}
         <Link href="/" className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -41,14 +51,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-
-          <button
-            onClick={() => setLanguage(language === "en" ? "es" : "en")}
-            className="flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
-            aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
-          >
-            {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
-          </button>
 
           <Link
             href="/contact"
@@ -95,16 +97,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-
-          <button
-            onClick={() => {
-              setLanguage(language === "en" ? "es" : "en");
-              setMobileOpen(false);
-            }}
-            className="block w-full text-left py-3 text-sm font-medium text-slate-600 hover:text-teal"
-          >
-            {language === "en" ? "🇲🇽 Español" : "🇺🇸 English"}
-          </button>
 
           <Link
             href="/contact"
