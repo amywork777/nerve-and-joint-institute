@@ -17,27 +17,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Left: language toggle */}
-        <button
-          onClick={() => setLanguage(language === "en" ? "es" : "en")}
-          className="flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
-          aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
-        >
-          {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
-        </button>
-
-        {/* Center: logo */}
         <Link href="/" className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-seal.svg"
+            src="/logo-wide.svg"
             alt="Nerve and Joint Institute"
-            width={44}
+            width={160}
             height={44}
           />
-          <span className="text-xl font-serif font-bold text-teal hidden sm:inline">
-            Nerve &amp; Joint Institute
-          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -52,6 +39,14 @@ export default function Header() {
             </Link>
           ))}
 
+          <button
+            onClick={() => setLanguage(language === "en" ? "es" : "en")}
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
+            aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
+          >
+            {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
+          </button>
+
           <Link
             href="/contact"
             className="rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
@@ -60,28 +55,38 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block h-0.5 w-6 bg-slate-700 transition-transform ${
-              mobileOpen ? "translate-y-2 rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-slate-700 transition-opacity ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-slate-700 transition-transform ${
-              mobileOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
+        {/* Mobile: language toggle + hamburger */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={() => setLanguage(language === "en" ? "es" : "en")}
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
+            aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
+          >
+            {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
+          </button>
+
+          <button
+            className="flex flex-col gap-1.5"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block h-0.5 w-6 bg-slate-700 transition-transform ${
+                mobileOpen ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-slate-700 transition-opacity ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-slate-700 transition-transform ${
+                mobileOpen ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

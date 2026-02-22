@@ -13,6 +13,9 @@ export default function Home() {
       <section className="relative bg-gradient-to-br from-teal-dark via-teal to-teal/90 text-white">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-40">
+          <p className="text-2xl md:text-3xl font-serif font-bold text-white mb-2">
+            Nerve &amp; Joint Institute
+          </p>
           <p className="text-sm font-semibold text-gold uppercase tracking-wider mb-4">
             Jianxun Zhou, M.D. PhD QME
           </p>

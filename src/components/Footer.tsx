@@ -13,10 +13,10 @@ export default function Footer() {
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-wide.svg"
+            src="/logo-seal.svg"
             alt="Nerve and Joint Institute"
-            width={220}
-            height={98}
+            width={140}
+            height={140}
             className="mb-4 invert"
           />
           <p className="text-sm leading-relaxed">
