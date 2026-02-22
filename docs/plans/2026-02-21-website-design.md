@@ -28,29 +28,24 @@ A multi-page medical practice website for **Nerve and Joint Institute**, a nerve
 - **Headings:** Playfair Display (serif) — premium, authoritative feel
 - **Body:** Inter (sans-serif) — clean, modern readability
 
-## Pages
+## Pages (4 total)
 
 ### Home (`/`)
-- Sticky header: logo + nav links + "Request Appointment" CTA button
+- Sticky header: logo + nav links (About & Services, Resources, Contact) + "Request Appointment" CTA button
 - Hero: large background area, headline ("Advanced Care for Nerve & Joint Conditions"), subtext, two CTAs (Book Appointment, Learn More)
 - "Why Choose Us": 3-4 icon cards (Board Certified, Advanced Technology, Patient-Centered Care, Comprehensive Treatment)
-- Services overview: grid of 4-6 service cards linking to /services
+- Services overview: grid of 4-6 service cards linking to /about#services
 - Doctor teaser: photo + brief intro linking to /about
 - Testimonials section
 - Footer: contact info, quick links, office hours, address
 
-### About (`/about`)
+### About & Services (`/about`)
 - Doctor bio: photo, credentials, education, affiliations
 - Practice philosophy
-- Team member cards (if applicable)
-
-### Services (`/services`)
-- Grid of service cards with icon, title, short description
-- Services: Nerve Conduction Studies, Joint Injections, EMG, Pain Management, Physical Therapy, Ultrasound-Guided Procedures
-
-### Conditions Treated (`/conditions`)
-- Categorized grid of conditions
-- Examples: Carpal Tunnel Syndrome, Peripheral Neuropathy, Arthritis, Sciatica, Herniated Disc, Fibromyalgia, Tennis Elbow, Plantar Fasciitis
+- Services section (anchor: #services): grid of service cards with icon, title, short description
+  - Nerve Conduction Studies, Joint Injections, EMG, Pain Management, Physical Therapy, Ultrasound-Guided Procedures
+- Conditions Treated section (anchor: #conditions): categorized grid
+  - Carpal Tunnel Syndrome, Peripheral Neuropathy, Arthritis, Sciatica, Herniated Disc, Fibromyalgia, Tennis Elbow, Plantar Fasciitis
 
 ### Patient Resources (`/resources`)
 - New patient info / what to expect
