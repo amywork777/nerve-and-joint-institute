@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-const navLinks = [
-  { href: "/about", label: "About & Services" },
-  { href: "/resources", label: "Patient Resources" },
-  { href: "/contact", label: "Contact" },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { href: "/about", label: t("nav.about") },
+    { href: "/resources", label: t("nav.resources") },
+    { href: "/contact", label: t("nav.contact") },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
@@ -39,11 +41,20 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
+          <button
+            onClick={() => setLanguage(language === "en" ? "es" : "en")}
+            className="flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors"
+            aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
+          >
+            {language === "en" ? "🇲🇽 ES" : "🇺🇸 EN"}
+          </button>
+
           <Link
             href="/contact"
             className="rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
           >
-            Schedule Consultation
+            {t("nav.schedule")}
           </Link>
         </nav>
 
@@ -84,12 +95,23 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
+          <button
+            onClick={() => {
+              setLanguage(language === "en" ? "es" : "en");
+              setMobileOpen(false);
+            }}
+            className="block w-full text-left py-3 text-sm font-medium text-slate-600 hover:text-teal"
+          >
+            {language === "en" ? "🇲🇽 Español" : "🇺🇸 English"}
+          </button>
+
           <Link
             href="/contact"
             className="mt-2 block rounded-md bg-gold px-5 py-2.5 text-center text-sm font-semibold text-white"
             onClick={() => setMobileOpen(false)}
           >
-            Schedule Consultation
+            {t("nav.schedule")}
           </Link>
         </nav>
       )}

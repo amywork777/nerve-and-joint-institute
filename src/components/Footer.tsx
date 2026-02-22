@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/lib/language-context";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-3">
@@ -31,7 +36,7 @@ export default function Footer() {
         {/* Quick links */}
         <div>
           <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-            Quick Links
+            {t("footer.quickLinks")}
           </h4>
           <ul className="space-y-2 text-sm">
             <li>
@@ -39,7 +44,7 @@ export default function Footer() {
                 href="/about"
                 className="hover:text-teal-light transition-colors"
               >
-                About &amp; Services
+                {t("footer.aboutServices")}
               </Link>
             </li>
             <li>
@@ -47,7 +52,7 @@ export default function Footer() {
                 href="/about#conditions"
                 className="hover:text-teal-light transition-colors"
               >
-                Conditions Treated
+                {t("footer.conditions")}
               </Link>
             </li>
             <li>
@@ -55,7 +60,7 @@ export default function Footer() {
                 href="/resources"
                 className="hover:text-teal-light transition-colors"
               >
-                Patient Resources
+                {t("footer.resources")}
               </Link>
             </li>
             <li>
@@ -63,7 +68,7 @@ export default function Footer() {
                 href="/contact"
                 className="hover:text-teal-light transition-colors"
               >
-                Contact Us
+                {t("footer.contactUs")}
               </Link>
             </li>
           </ul>
@@ -72,20 +77,19 @@ export default function Footer() {
         {/* Hours */}
         <div>
           <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-            Office Hours
+            {t("footer.officeHours")}
           </h4>
           <ul className="space-y-2 text-sm">
-            <li>Monday &ndash; Friday: 8:00 AM &ndash; 5:00 PM</li>
-            <li>Saturday: By Appointment</li>
-            <li>Sunday: Closed</li>
+            <li>{t("footer.monFri")}</li>
+            <li>{t("footer.sat")}</li>
+            <li>{t("footer.sun")}</li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-slate-700">
         <div className="mx-auto max-w-7xl px-6 py-6 text-center text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} Nerve and Joint Institute. All
-          rights reserved.
+          &copy; {new Date().getFullYear()} {t("footer.copyright")}
         </div>
       </div>
     </footer>

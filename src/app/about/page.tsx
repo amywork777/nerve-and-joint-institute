@@ -1,73 +1,55 @@
+"use client";
+
 import Image from "next/image";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About & Services | Nerve and Joint Institute",
-  description:
-    "Learn about Dr. Jianxun Zhou, MD PhD QME and explore our comprehensive nerve and musculoskeletal services.",
-};
-
-const services = [
-  {
-    title: "Regenerative Medicine",
-    description:
-      "Advanced regenerative therapies that harness the body's natural healing abilities to repair damaged tissues, reduce inflammation, and restore function.",
-  },
-  {
-    title: "Electrodiagnostic Medicine (EMG)",
-    description:
-      "Precise diagnostic testing to evaluate nerve and muscle function, helping identify nerve damage, compression, or neuromuscular disease for accurate diagnosis.",
-  },
-  {
-    title: "BOTOX Treatment",
-    description:
-      "Therapeutic BOTOX injections for chronic pain conditions, muscle spasticity, and other neuromuscular disorders to improve comfort and function.",
-  },
-  {
-    title: "Rehabilitation",
-    description:
-      "Comprehensive rehabilitation programs designed to restore mobility, strength, and quality of life through personalized treatment plans.",
-  },
-];
-
-const conditions = [
-  "Nerve Compressions (Carpal Tunnel, Cubital Tunnel)",
-  "Peripheral Neuropathy",
-  "Radiculopathy",
-  "Muscle Disorders & Myopathies",
-  "Sports & Overuse Injuries",
-  "Arthritis & Joint Pain",
-  "Spinal Stenosis",
-  "Disc Herniation",
-  "Facet Joint Arthritis",
-  "Chronic Pain",
-];
-
-const education = [
-  "MD, Beijing Medical University",
-  "PhD in Health and Rehabilitation Science, University of Pittsburgh",
-  "Neuroscience Research, University of Michigan",
-  "Residency in Physical Medicine and Rehabilitation, Albany Medical Center",
-  "Fellowship in Electrodiagnostic and Spine Medicine, University of Massachusetts",
-];
-
-const credentials = [
-  "Diplomate, American Board of Physical Medicine & Rehabilitation",
-  "Diplomate, American Board of Electrodiagnostic Medicine",
-  "Fellowship Trained in Electrodiagnostic Medicine and Interventional Pain",
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const services = [
+    { titleKey: "service.regen.title" as const, descKey: "about.service.regen.desc" as const },
+    { titleKey: "service.emg.title" as const, descKey: "about.service.emg.desc" as const },
+    { titleKey: "service.botox.title" as const, descKey: "about.service.botox.desc" as const },
+    { titleKey: "service.rehab.title" as const, descKey: "about.service.rehab.desc" as const },
+  ];
+
+  const conditions = [
+    "condition.nerve" as const,
+    "condition.neuropathy" as const,
+    "condition.radiculopathy" as const,
+    "condition.muscle" as const,
+    "condition.sports" as const,
+    "condition.arthritis" as const,
+    "condition.stenosis" as const,
+    "condition.disc" as const,
+    "condition.facet" as const,
+    "condition.chronic" as const,
+  ];
+
+  const credentials = [
+    "cred.pmr" as const,
+    "cred.edx" as const,
+    "cred.fellowship" as const,
+  ];
+
+  const education = [
+    "edu.md" as const,
+    "edu.phd" as const,
+    "edu.neuro" as const,
+    "edu.residency" as const,
+    "edu.fellowship" as const,
+  ];
+
   return (
     <>
       {/* Hero Banner */}
       <section className="bg-gradient-to-r from-teal-dark to-teal py-20 px-6 text-white">
         <div className="mx-auto max-w-7xl">
           <h1 className="text-4xl md:text-5xl font-bold">
-            About Our Practice
+            {t("about.hero.title")}
           </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl">
-            Precision neuromuscular care with Dr. Jianxun Zhou.
+            {t("about.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -87,47 +69,36 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-3">
             <p className="text-sm font-semibold text-gold uppercase tracking-wider">
-              Lead Physician
+              {t("about.lead")}
             </p>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-800">
               Jianxun Zhou, M.D. PhD QME
             </h2>
 
             <div className="mt-3 space-y-1">
-              {credentials.map((cred) => (
-                <p key={cred} className="text-muted font-medium text-sm">
-                  {cred}
+              {credentials.map((key) => (
+                <p key={key} className="text-muted font-medium text-sm">
+                  {t(key)}
                 </p>
               ))}
             </div>
 
             <p className="mt-6 text-muted leading-relaxed">
-              Looking for expert diagnosis and treatment of nerve and
-              musculoskeletal issues? Dr. Jianxun Zhou specializes in EMG and
-              musculoskeletal medicine, offering personalized care to help you
-              move and feel better.
+              {t("about.bio1")}
             </p>
             <p className="mt-4 text-muted leading-relaxed">
-              Dr. Zhou earned his MD from Beijing Medical University and a PhD
-              in Health and Rehabilitation Science from the University of
-              Pittsburgh. He conducted neuroscience research at the University
-              of Michigan before completing his residency in Physical Medicine
-              and Rehabilitation at Albany Medical Center and a fellowship in
-              Electrodiagnostic and Spine Medicine at the University of
-              Massachusetts. He later practiced at Illinois Neurological
-              Institute and now serves patients in California, focusing on
-              chronic pain and workers&apos; comp cases.
+              {t("about.bio2")}
             </p>
 
             <div className="mt-8">
               <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider font-sans mb-3">
-                Education &amp; Training
+                {t("about.education")}
               </h3>
               <ul className="space-y-2">
-                {education.map((item) => (
-                  <li key={item} className="text-sm text-muted flex gap-2">
+                {education.map((key) => (
+                  <li key={key} className="text-sm text-muted flex gap-2">
                     <span className="text-teal mt-1 shrink-0">&#10003;</span>
-                    {item}
+                    {t(key)}
                   </li>
                 ))}
               </ul>
@@ -140,33 +111,31 @@ export default function AboutPage() {
       <section className="bg-teal-light py-16 px-6">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl font-bold text-slate-800 text-center mb-10">
-            Why Patients Trust Dr. Zhou
+            {t("home.whyTrust.title")}
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             <div className="rounded-xl bg-white p-8 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-800 font-sans">
-                Whole-Person Care
+                {t("home.whyTrust.wholePerson.title")}
               </h3>
               <p className="mt-2 text-sm text-muted leading-relaxed">
-                Compassionate, patient-first approach — like treating family.
+                {t("home.whyTrust.wholePerson.desc")}
               </p>
             </div>
             <div className="rounded-xl bg-white p-8 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-800 font-sans">
-                Deep Expertise
+                {t("home.whyTrust.expertise.title")}
               </h3>
               <p className="mt-2 text-sm text-muted leading-relaxed">
-                Years of experience in EMG, interventional spine procedures,
-                and musculoskeletal conditions.
+                {t("home.whyTrust.expertise.desc")}
               </p>
             </div>
             <div className="rounded-xl bg-white p-8 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-800 font-sans">
-                Modern Methods
+                {t("home.whyTrust.modern.title")}
               </h3>
               <p className="mt-2 text-sm text-muted leading-relaxed">
-                Uses the latest tools and techniques for accurate diagnosis and
-                effective treatment.
+                {t("home.whyTrust.modern.desc")}
               </p>
             </div>
           </div>
@@ -178,13 +147,13 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Our Services
+              {t("about.services.title")}
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {services.map((service) => (
               <div
-                key={service.title}
+                key={service.titleKey}
                 className="rounded-xl border border-slate-100 p-8 hover:shadow-md transition-shadow"
               >
                 <div className="w-10 h-10 rounded-lg bg-teal-light flex items-center justify-center mb-4">
@@ -203,10 +172,10 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800 font-sans">
-                  {service.title}
+                  {t(service.titleKey)}
                 </h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
               </div>
             ))}
@@ -222,16 +191,16 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Conditions Treated
+              {t("about.conditions.title")}
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {conditions.map((condition) => (
+            {conditions.map((key) => (
               <div
-                key={condition}
+                key={key}
                 className="rounded-lg bg-white px-5 py-4 text-sm font-medium text-slate-700 shadow-sm hover:shadow-md transition-shadow"
               >
-                {condition}
+                {t(key)}
               </div>
             ))}
           </div>

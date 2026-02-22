@@ -1,94 +1,48 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Patient Resources | Nerve and Joint Institute",
-  description:
-    "Find insurance information and answers to frequently asked questions at Nerve and Joint Institute.",
-};
-
-const insurances = [
-  "Anthem Blue Cross",
-  "Blue Shield",
-  "Hill Physician",
-  "Medicare",
-  "UnitedHealthcare",
-  "Aetna",
-  "Workers' Compensation",
-  "Personal Injury Claims",
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Schedule Your Visit",
-    description:
-      "Call us at (916) 741-0848 or use our online form to schedule your consultation with Dr. Zhou.",
-  },
-  {
-    number: "02",
-    title: "Arrive 15 Minutes Early",
-    description:
-      "Please arrive early to complete any remaining paperwork. Bring your ID, insurance card, and any relevant medical records.",
-  },
-  {
-    number: "03",
-    title: "Comprehensive Consultation",
-    description:
-      "Dr. Zhou will perform a thorough evaluation, review your medical history, and discuss your symptoms and concerns in detail.",
-  },
-  {
-    number: "04",
-    title: "Personalized Treatment Plan",
-    description:
-      "Based on the evaluation, you will receive a customized treatment plan with clear next steps and expected outcomes.",
-  },
-];
-
-const faqs = [
-  {
-    question: "What should I bring to my first appointment?",
-    answer:
-      "Please bring a valid photo ID, your insurance card, a list of current medications, any relevant medical records or imaging studies, and a referral from your primary care physician if required by your insurance.",
-  },
-  {
-    question: "Where are you located?",
-    answer:
-      "We are located at 1001 Nut Tree Road, Suite 110, Vacaville, CA 95687.",
-  },
-  {
-    question: "Do you accept workers' compensation cases?",
-    answer:
-      "Yes, Dr. Zhou has extensive experience with workers' compensation cases and personal injury claims. Contact our office to discuss your specific situation.",
-  },
-  {
-    question: "What is an EMG test?",
-    answer:
-      "An EMG (electromyography) measures the electrical activity in your muscles and nerves. It helps diagnose conditions like nerve compressions, peripheral neuropathy, radiculopathy, and muscle disorders. Dr. Zhou is a Diplomate of the American Board of Electrodiagnostic Medicine.",
-  },
-  {
-    question: "What conditions does Dr. Zhou treat?",
-    answer:
-      "Dr. Zhou treats a wide range of conditions including nerve compressions (carpal tunnel, cubital tunnel), peripheral neuropathy, radiculopathy, muscle disorders, sports and overuse injuries, arthritis, joint pain, spinal stenosis, disc herniation, facet joint arthritis, and chronic pain.",
-  },
-  {
-    question: "What services do you offer?",
-    answer:
-      "We offer regenerative medicine, electrodiagnostic medicine (EMG), BOTOX treatment, and rehabilitation services. Each treatment plan is personalized to your specific needs.",
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function ResourcesPage() {
+  const { t } = useLanguage();
+
+  const steps = [
+    { number: "01", titleKey: "resources.step1.title" as const, descKey: "resources.step1.desc" as const },
+    { number: "02", titleKey: "resources.step2.title" as const, descKey: "resources.step2.desc" as const },
+    { number: "03", titleKey: "resources.step3.title" as const, descKey: "resources.step3.desc" as const },
+    { number: "04", titleKey: "resources.step4.title" as const, descKey: "resources.step4.desc" as const },
+  ];
+
+  const insurances = [
+    "insurance.anthem" as const,
+    "insurance.blueShield" as const,
+    "insurance.hill" as const,
+    "insurance.medicare" as const,
+    "insurance.united" as const,
+    "insurance.aetna" as const,
+    "insurance.workers" as const,
+    "insurance.pi" as const,
+  ];
+
+  const faqs = [
+    { qKey: "resources.faq1.q" as const, aKey: "resources.faq1.a" as const },
+    { qKey: "resources.faq2.q" as const, aKey: "resources.faq2.a" as const },
+    { qKey: "resources.faq3.q" as const, aKey: "resources.faq3.a" as const },
+    { qKey: "resources.faq4.q" as const, aKey: "resources.faq4.a" as const },
+    { qKey: "resources.faq5.q" as const, aKey: "resources.faq5.a" as const },
+    { qKey: "resources.faq6.q" as const, aKey: "resources.faq6.a" as const },
+  ];
+
   return (
     <>
       {/* Hero Banner */}
       <section className="bg-gradient-to-r from-teal-dark to-teal py-20 px-6 text-white">
         <div className="mx-auto max-w-7xl">
           <h1 className="text-4xl md:text-5xl font-bold">
-            Patient Resources
+            {t("resources.hero.title")}
           </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl">
-            Everything you need to know before, during, and after your visit.
+            {t("resources.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -98,11 +52,10 @@ export default function ResourcesPage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              What to Expect
+              {t("resources.expect.title")}
             </h2>
             <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-              Your first visit is an important step. Here&apos;s what the
-              process looks like.
+              {t("resources.expect.subtitle")}
             </p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -112,10 +65,10 @@ export default function ResourcesPage() {
                   {step.number}
                 </div>
                 <h3 className="mt-3 text-lg font-semibold text-slate-800 font-sans">
-                  {step.title}
+                  {t(step.titleKey)}
                 </h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
-                  {step.description}
+                  {t(step.descKey)}
                 </p>
               </div>
             ))}
@@ -128,31 +81,31 @@ export default function ResourcesPage() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Insurance Accepted
+              {t("resources.insurance.title")}
             </h2>
             <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-              We currently accept the following plans.
+              {t("resources.insurance.subtitle")}
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-            {insurances.map((name) => (
+            {insurances.map((key) => (
               <div
-                key={name}
+                key={key}
                 className="rounded-lg bg-white px-6 py-4 text-center text-sm font-medium text-slate-700 shadow-sm"
               >
-                {name}
+                {t(key)}
               </div>
             ))}
           </div>
           <p className="mt-8 text-center text-sm text-muted">
-            Don&apos;t see your insurance listed?{" "}
+            {t("resources.insurance.notListed")}{" "}
             <Link
               href="/contact"
               className="text-teal font-medium hover:underline"
             >
-              Contact us
+              {t("resources.insurance.contactUs")}
             </Link>{" "}
-            to verify your coverage.
+            {t("resources.insurance.verify")}
           </p>
         </div>
       </section>
@@ -162,17 +115,17 @@ export default function ResourcesPage() {
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Frequently Asked Questions
+              {t("resources.faq.title")}
             </h2>
           </div>
           <div className="space-y-4">
             {faqs.map((faq) => (
               <details
-                key={faq.question}
+                key={faq.qKey}
                 className="group rounded-xl border border-slate-200 overflow-hidden"
               >
                 <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-medium text-slate-800 hover:bg-slate-50 transition-colors font-sans text-sm">
-                  {faq.question}
+                  {t(faq.qKey)}
                   <svg
                     className="w-5 h-5 text-muted shrink-0 transition-transform group-open:rotate-180"
                     fill="none"
@@ -188,7 +141,7 @@ export default function ResourcesPage() {
                   </svg>
                 </summary>
                 <div className="px-6 pb-5 text-sm text-muted leading-relaxed">
-                  {faq.answer}
+                  {t(faq.aKey)}
                 </div>
               </details>
             ))}
@@ -200,17 +153,16 @@ export default function ResourcesPage() {
       <section className="bg-teal py-16 px-6 text-center text-white">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold">
-            Start Your Journey to Better Living Today
+            {t("resources.cta.title")}
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            Call us at (916) 741-0848 or email info@nerveandjoint.com to
-            schedule your consultation.
+            {t("resources.cta.subtitle")}
           </p>
           <Link
             href="/contact"
             className="mt-8 inline-flex items-center justify-center rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
           >
-            Get in Touch
+            {t("resources.cta.button")}
           </Link>
         </div>
       </section>

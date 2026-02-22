@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-
-const reasons = ["New Patient", "Follow-Up", "Second Opinion", "Workers' Compensation", "Personal Injury", "Other"];
-const times = ["Morning (8am–12pm)", "Afternoon (12pm–5pm)", "No Preference"];
+import { useLanguage } from "@/lib/language-context";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -19,6 +18,21 @@ export default function ContactPage() {
     time: "",
     notes: "",
   });
+
+  const reasons = [
+    { key: "reason.newPatient" as const, value: "New Patient" },
+    { key: "reason.followUp" as const, value: "Follow-Up" },
+    { key: "reason.secondOpinion" as const, value: "Second Opinion" },
+    { key: "reason.workersComp" as const, value: "Workers' Compensation" },
+    { key: "reason.personalInjury" as const, value: "Personal Injury" },
+    { key: "reason.other" as const, value: "Other" },
+  ];
+
+  const times = [
+    { key: "time.morning" as const, value: "Morning (8am–12pm)" },
+    { key: "time.afternoon" as const, value: "Afternoon (12pm–5pm)" },
+    { key: "time.noPref" as const, value: "No Preference" },
+  ];
 
   function handleChange(
     e: React.ChangeEvent<
@@ -51,10 +65,9 @@ export default function ContactPage() {
       {/* Hero Banner */}
       <section className="bg-gradient-to-r from-teal-dark to-teal py-20 px-6 text-white">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl md:text-5xl font-bold">Get in Touch</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">{t("contact.hero.title")}</h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl">
-            Start your journey to better living today. Schedule a consultation
-            with Dr. Zhou.
+            {t("contact.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -64,23 +77,20 @@ export default function ContactPage() {
           {/* Form */}
           <div className="lg:col-span-2">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
-              Schedule a Consultation
+              {t("contact.form.title")}
             </h2>
             <p className="mt-2 text-muted text-sm">
-              Fill out the form below and our team will contact you to confirm
-              your appointment.
+              {t("contact.form.subtitle")}
             </p>
 
             {status === "success" ? (
               <div className="mt-8 rounded-xl bg-teal-light border border-teal/20 p-8 text-center">
                 <div className="text-teal text-4xl mb-3">&#10003;</div>
                 <h3 className="text-xl font-semibold text-slate-800 font-sans">
-                  Thank You!
+                  {t("contact.form.thankYou")}
                 </h3>
                 <p className="mt-2 text-muted text-sm">
-                  Your consultation request has been submitted. Our team will
-                  contact you within 1 business day to confirm your
-                  appointment.
+                  {t("contact.form.successMsg")}
                 </p>
               </div>
             ) : (
@@ -92,7 +102,7 @@ export default function ContactPage() {
                       htmlFor="firstName"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      First Name <span className="text-red-500">*</span>
+                      {t("contact.form.firstName")} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -109,7 +119,7 @@ export default function ContactPage() {
                       htmlFor="lastName"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      Last Name <span className="text-red-500">*</span>
+                      {t("contact.form.lastName")} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -130,7 +140,7 @@ export default function ContactPage() {
                       htmlFor="email"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      Email <span className="text-red-500">*</span>
+                      {t("contact.form.email")} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -147,7 +157,7 @@ export default function ContactPage() {
                       htmlFor="phone"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      Phone
+                      {t("contact.form.phone")}
                     </label>
                     <input
                       type="tel"
@@ -166,7 +176,7 @@ export default function ContactPage() {
                     htmlFor="reason"
                     className="block text-sm font-medium text-slate-700 mb-1.5"
                   >
-                    Reason for Visit
+                    {t("contact.form.reason")}
                   </label>
                   <select
                     id="reason"
@@ -175,10 +185,10 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
                   >
-                    <option value="">Select a reason...</option>
+                    <option value="">{t("contact.form.reasonPlaceholder")}</option>
                     {reasons.map((r) => (
-                      <option key={r} value={r}>
-                        {r}
+                      <option key={r.value} value={r.value}>
+                        {t(r.key)}
                       </option>
                     ))}
                   </select>
@@ -191,7 +201,7 @@ export default function ContactPage() {
                       htmlFor="date"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      Preferred Date
+                      {t("contact.form.date")}
                     </label>
                     <input
                       type="date"
@@ -207,7 +217,7 @@ export default function ContactPage() {
                       htmlFor="time"
                       className="block text-sm font-medium text-slate-700 mb-1.5"
                     >
-                      Preferred Time
+                      {t("contact.form.time")}
                     </label>
                     <select
                       id="time"
@@ -216,10 +226,10 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
                     >
-                      <option value="">Select a time...</option>
-                      {times.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
+                      <option value="">{t("contact.form.timePlaceholder")}</option>
+                      {times.map((ti) => (
+                        <option key={ti.value} value={ti.value}>
+                          {t(ti.key)}
                         </option>
                       ))}
                     </select>
@@ -232,7 +242,7 @@ export default function ContactPage() {
                     htmlFor="notes"
                     className="block text-sm font-medium text-slate-700 mb-1.5"
                   >
-                    Additional Notes
+                    {t("contact.form.notes")}
                   </label>
                   <textarea
                     id="notes"
@@ -240,15 +250,14 @@ export default function ContactPage() {
                     rows={4}
                     value={formData.notes}
                     onChange={handleChange}
-                    placeholder="Please describe your symptoms or concerns..."
+                    placeholder={t("contact.form.notesPlaceholder")}
                     className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors resize-none"
                   />
                 </div>
 
                 {status === "error" && (
                   <div className="rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                    Something went wrong. Please try again or call our office
-                    directly at (916) 741-0848.
+                    {t("contact.form.errorMsg")}
                   </div>
                 )}
 
@@ -258,8 +267,8 @@ export default function ContactPage() {
                   className="w-full rounded-md bg-gold px-8 py-4 text-sm font-semibold text-white hover:bg-gold/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "sending"
-                    ? "Submitting..."
-                    : "Submit Consultation Request"}
+                    ? t("contact.form.submitting")
+                    : t("contact.form.submit")}
                 </button>
               </form>
             )}
@@ -269,7 +278,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div>
               <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
-                Office Location
+                {t("contact.office.location")}
               </h3>
               <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4">
                 <iframe
@@ -292,7 +301,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
-                Contact Information
+                {t("contact.office.info")}
               </h3>
               <ul className="space-y-2 text-sm text-muted">
                 <li>
@@ -312,24 +321,24 @@ export default function ContactPage() {
 
             <div>
               <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
-                Office Hours
+                {t("contact.office.hours")}
               </h3>
               <ul className="space-y-2 text-sm text-muted">
                 <li className="flex justify-between">
-                  <span>Monday &ndash; Friday</span>
+                  <span>{t("contact.office.monFri")}</span>
                   <span className="font-medium text-slate-700">
                     8:00 AM &ndash; 5:00 PM
                   </span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Saturday</span>
+                  <span>{t("contact.office.sat")}</span>
                   <span className="font-medium text-slate-700">
-                    By Appointment
+                    {t("contact.office.byAppt")}
                   </span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="font-medium text-slate-700">Closed</span>
+                  <span>{t("contact.office.sun")}</span>
+                  <span className="font-medium text-slate-700">{t("contact.office.closed")}</span>
                 </li>
               </ul>
             </div>
