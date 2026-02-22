@@ -1,75 +1,60 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About & Services | Nerve and Joint Institute",
   description:
-    "Learn about our practice, meet Dr. James Chen, and explore our comprehensive nerve and joint services.",
+    "Learn about Dr. Jianxun Zhou, MD PhD QME and explore our comprehensive nerve and musculoskeletal services.",
 };
 
 const services = [
   {
-    title: "Nerve Conduction Studies",
+    title: "Regenerative Medicine",
     description:
-      "Non-invasive diagnostic tests that measure how quickly electrical signals move through your nerves, helping identify nerve damage, compression, or disease.",
+      "Advanced regenerative therapies that harness the body's natural healing abilities to repair damaged tissues, reduce inflammation, and restore function.",
   },
   {
-    title: "Joint Injections",
+    title: "Electrodiagnostic Medicine (EMG)",
     description:
-      "Targeted corticosteroid or hyaluronic acid injections to reduce joint inflammation, relieve pain, and improve mobility in affected areas.",
+      "Precise diagnostic testing to evaluate nerve and muscle function, helping identify nerve damage, compression, or neuromuscular disease for accurate diagnosis.",
   },
   {
-    title: "Electromyography (EMG)",
+    title: "BOTOX Treatment",
     description:
-      "Advanced diagnostic testing that evaluates the electrical activity of muscles to detect neuromuscular abnormalities and guide treatment decisions.",
+      "Therapeutic BOTOX injections for chronic pain conditions, muscle spasticity, and other neuromuscular disorders to improve comfort and function.",
   },
   {
-    title: "Pain Management",
+    title: "Rehabilitation",
     description:
-      "Multidisciplinary approaches to chronic pain including medication management, interventional procedures, and lifestyle modifications.",
-  },
-  {
-    title: "Physical Therapy",
-    description:
-      "Individualized rehabilitation programs designed to restore function, improve strength, and enhance mobility through targeted exercises and manual therapy.",
-  },
-  {
-    title: "Ultrasound-Guided Procedures",
-    description:
-      "Real-time ultrasound imaging ensures precise needle placement for injections and aspirations, improving accuracy and patient safety.",
+      "Comprehensive rehabilitation programs designed to restore mobility, strength, and quality of life through personalized treatment plans.",
   },
 ];
 
 const conditions = [
-  "Carpal Tunnel Syndrome",
+  "Nerve Compressions (Carpal Tunnel, Cubital Tunnel)",
   "Peripheral Neuropathy",
-  "Rheumatoid Arthritis",
-  "Osteoarthritis",
-  "Sciatica",
-  "Herniated Disc",
-  "Fibromyalgia",
-  "Tennis Elbow",
-  "Plantar Fasciitis",
-  "Cubital Tunnel Syndrome",
-  "Spinal Stenosis",
-  "Chronic Pain Syndrome",
   "Radiculopathy",
-  "Tendinitis",
-  "Bursitis",
-  "Myasthenia Gravis",
+  "Muscle Disorders & Myopathies",
+  "Sports & Overuse Injuries",
+  "Arthritis & Joint Pain",
+  "Spinal Stenosis",
+  "Disc Herniation",
+  "Facet Joint Arthritis",
+  "Chronic Pain",
 ];
 
 const education = [
-  "MD, Johns Hopkins University School of Medicine",
-  "Residency in Neurology, Massachusetts General Hospital",
-  "Fellowship in Pain Medicine, Cleveland Clinic",
-  "Board Certified in Neurology and Pain Medicine",
+  "MD, Beijing Medical University",
+  "PhD in Health and Rehabilitation Science, University of Pittsburgh",
+  "Neuroscience Research, University of Michigan",
+  "Residency in Physical Medicine and Rehabilitation, Albany Medical Center",
+  "Fellowship in Electrodiagnostic and Spine Medicine, University of Massachusetts",
 ];
 
-const affiliations = [
-  "American Academy of Neurology",
-  "American Association of Neuromuscular Medicine",
-  "International Association for the Study of Pain",
-  "Oregon Medical Association",
+const credentials = [
+  "Diplomate, American Board of Physical Medicine & Rehabilitation",
+  "Diplomate, American Board of Electrodiagnostic Medicine",
+  "Fellowship Trained in Electrodiagnostic Medicine and Interventional Pain",
 ];
 
 export default function AboutPage() {
@@ -82,7 +67,7 @@ export default function AboutPage() {
             About Our Practice
           </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl">
-            Dedicated to excellence in nerve and joint care since 2010.
+            Precision neuromuscular care with Dr. Jianxun Zhou.
           </p>
         </div>
       </section>
@@ -91,8 +76,13 @@ export default function AboutPage() {
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-5 items-start">
           <div className="lg:col-span-2">
-            <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-teal-light to-teal/20 flex items-end justify-center overflow-hidden">
-              <div className="w-40 h-56 bg-teal/20 rounded-t-full" />
+            <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-teal-light to-teal/20 overflow-hidden relative">
+              <Image
+                src="/dr-zhou.png"
+                alt="Dr. Jianxun Zhou"
+                fill
+                className="object-cover object-top"
+              />
             </div>
           </div>
           <div className="lg:col-span-3">
@@ -100,70 +90,86 @@ export default function AboutPage() {
               Lead Physician
             </p>
             <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-800">
-              Dr. James Chen, MD
+              Jianxun Zhou, M.D. PhD QME
             </h2>
-            <p className="mt-1 text-muted font-medium">
-              Board-Certified Neurologist &amp; Pain Management Specialist
-            </p>
+
+            <div className="mt-3 space-y-1">
+              {credentials.map((cred) => (
+                <p key={cred} className="text-muted font-medium text-sm">
+                  {cred}
+                </p>
+              ))}
+            </div>
+
             <p className="mt-6 text-muted leading-relaxed">
-              Dr. Chen brings over 15 years of specialized experience in
-              diagnosing and treating complex nerve and joint conditions. His
-              patient-centered approach combines thorough diagnostic evaluation
-              with the latest evidence-based treatments to achieve optimal
-              outcomes.
+              Looking for expert diagnosis and treatment of nerve and
+              musculoskeletal issues? Dr. Jianxun Zhou specializes in EMG and
+              musculoskeletal medicine, offering personalized care to help you
+              move and feel better.
             </p>
             <p className="mt-4 text-muted leading-relaxed">
-              He is committed to staying at the forefront of medical advances,
-              regularly participating in research and continuing education to
-              bring the most current treatment options to his patients.
+              Dr. Zhou earned his MD from Beijing Medical University and a PhD
+              in Health and Rehabilitation Science from the University of
+              Pittsburgh. He conducted neuroscience research at the University
+              of Michigan before completing his residency in Physical Medicine
+              and Rehabilitation at Albany Medical Center and a fellowship in
+              Electrodiagnostic and Spine Medicine at the University of
+              Massachusetts. He later practiced at Illinois Neurological
+              Institute and now serves patients in California, focusing on
+              chronic pain and workers&apos; comp cases.
             </p>
 
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              <div>
-                <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider font-sans mb-3">
-                  Education &amp; Training
-                </h3>
-                <ul className="space-y-2">
-                  {education.map((item) => (
-                    <li key={item} className="text-sm text-muted flex gap-2">
-                      <span className="text-teal mt-1 shrink-0">&#10003;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider font-sans mb-3">
-                  Professional Affiliations
-                </h3>
-                <ul className="space-y-2">
-                  {affiliations.map((item) => (
-                    <li key={item} className="text-sm text-muted flex gap-2">
-                      <span className="text-teal mt-1 shrink-0">&#10003;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="mt-8">
+              <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider font-sans mb-3">
+                Education &amp; Training
+              </h3>
+              <ul className="space-y-2">
+                {education.map((item) => (
+                  <li key={item} className="text-sm text-muted flex gap-2">
+                    <span className="text-teal mt-1 shrink-0">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Practice Philosophy */}
+      {/* Why Patients Trust */}
       <section className="bg-teal-light py-16 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-slate-800">
-            Our Philosophy
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-3xl font-bold text-slate-800 text-center mb-10">
+            Why Patients Trust Dr. Zhou
           </h2>
-          <p className="mt-6 text-muted leading-relaxed text-lg">
-            At Nerve and Joint Institute, we believe that every patient
-            deserves a thorough evaluation, a clear diagnosis, and a
-            personalized treatment plan. We take the time to listen to your
-            concerns, explain your options, and work together toward the best
-            possible outcome. Our goal is not just to treat symptoms, but to
-            address the root cause of your condition.
-          </p>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-xl bg-white p-8 shadow-sm">
+              <h3 className="text-lg font-semibold text-slate-800 font-sans">
+                Whole-Person Care
+              </h3>
+              <p className="mt-2 text-sm text-muted leading-relaxed">
+                Compassionate, patient-first approach — like treating family.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-8 shadow-sm">
+              <h3 className="text-lg font-semibold text-slate-800 font-sans">
+                Deep Expertise
+              </h3>
+              <p className="mt-2 text-sm text-muted leading-relaxed">
+                Years of experience in EMG, interventional spine procedures,
+                and musculoskeletal conditions.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-8 shadow-sm">
+              <h3 className="text-lg font-semibold text-slate-800 font-sans">
+                Modern Methods
+              </h3>
+              <p className="mt-2 text-sm text-muted leading-relaxed">
+                Uses the latest tools and techniques for accurate diagnosis and
+                effective treatment.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -174,12 +180,8 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
               Our Services
             </h2>
-            <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-              Comprehensive diagnostic and treatment services tailored to your
-              specific condition.
-            </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2">
             {services.map((service) => (
               <div
                 key={service.title}
@@ -213,16 +215,15 @@ export default function AboutPage() {
       </section>
 
       {/* Conditions Treated */}
-      <section id="conditions" className="bg-teal-light py-20 px-6 scroll-mt-20">
+      <section
+        id="conditions"
+        className="bg-teal-light py-20 px-6 scroll-mt-20"
+      >
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Conditions We Treat
+              Conditions Treated
             </h2>
-            <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-              Our specialists have extensive experience treating a wide range
-              of nerve and joint conditions.
-            </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {conditions.map((condition) => (

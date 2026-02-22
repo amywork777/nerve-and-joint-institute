@@ -6,18 +6,25 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-3">
         {/* Brand + contact */}
         <div>
-          <h3 className="text-xl text-white mb-4">
-            Nerve &amp; Joint Institute
-          </h3>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-wide.svg"
+            alt="Nerve and Joint Institute"
+            width={220}
+            height={98}
+            className="mb-4 invert"
+          />
           <p className="text-sm leading-relaxed">
-            123 Medical Center Drive, Suite 200
+            1001 Nut Tree Road, Suite 110
             <br />
-            Portland, OR 97201
+            Vacaville, CA 95687
           </p>
           <p className="mt-3 text-sm">
-            Phone: (503) 555-0100
+            Phone: (916) 741-0848
             <br />
-            Fax: (503) 555-0101
+            Fax: 800-268-8044
+            <br />
+            Email: info@nerveandjoint.com
           </p>
         </div>
 

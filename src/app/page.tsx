@@ -1,30 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 
-const features = [
+const whyTrust = [
   {
-    title: "Board Certified",
+    title: "Whole-Person Care",
     description:
-      "Our physicians are board-certified specialists with extensive training in nerve and joint disorders.",
-    icon: (
-      <svg className="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Advanced Technology",
-    description:
-      "State-of-the-art diagnostic equipment and minimally invasive treatment options for optimal outcomes.",
-    icon: (
-      <svg className="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-1.341 4.024A2.25 2.25 0 0115.5 20.25H8.5a2.25 2.25 0 01-2.159-1.726L5 14.5m14 0H5" />
-      </svg>
-    ),
-  },
-  {
-    title: "Patient-Centered Care",
-    description:
-      "We take the time to listen, educate, and develop personalized treatment plans for every patient.",
+      "Compassionate, patient-first approach — like treating family.",
     icon: (
       <svg className="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -32,12 +13,22 @@ const features = [
     ),
   },
   {
-    title: "Comprehensive Treatment",
+    title: "Deep Expertise",
     description:
-      "From diagnosis to recovery, we offer a full spectrum of services under one roof.",
+      "Years of experience in EMG, interventional spine procedures, and musculoskeletal conditions.",
     icon: (
       <svg className="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Modern Methods",
+    description:
+      "Uses the latest tools and techniques for accurate diagnosis and effective treatment.",
+    icon: (
+      <svg className="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-1.341 4.024A2.25 2.25 0 0115.5 20.25H8.5a2.25 2.25 0 01-2.159-1.726L5 14.5m14 0H5" />
       </svg>
     ),
   },
@@ -45,49 +36,47 @@ const features = [
 
 const services = [
   {
-    title: "Nerve Conduction Studies",
-    description: "Precise diagnostic testing to evaluate nerve function and identify the source of pain or weakness.",
+    title: "Regenerative Medicine",
+    description: "Advanced regenerative therapies to promote natural healing and restore function to damaged tissues.",
   },
   {
-    title: "Joint Injections",
-    description: "Targeted injections to reduce inflammation and relieve pain in affected joints.",
+    title: "Electrodiagnostic Medicine (EMG)",
+    description: "Precise diagnostic testing to evaluate nerve and muscle function, identifying the source of pain or weakness.",
   },
   {
-    title: "Electromyography (EMG)",
-    description: "Advanced muscle and nerve testing to diagnose conditions affecting the neuromuscular system.",
+    title: "BOTOX Treatment",
+    description: "Therapeutic BOTOX injections for chronic pain conditions and muscle-related disorders.",
   },
   {
-    title: "Pain Management",
-    description: "Comprehensive approaches to chronic pain including medication, therapy, and interventional procedures.",
-  },
-  {
-    title: "Physical Therapy",
-    description: "Guided rehabilitation programs to restore mobility, strength, and function.",
-  },
-  {
-    title: "Ultrasound-Guided Procedures",
-    description: "Real-time imaging for precise needle placement during injections and diagnostic procedures.",
+    title: "Rehabilitation",
+    description: "Comprehensive rehabilitation programs to restore mobility, strength, and quality of life.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "The team at Nerve and Joint Institute changed my life. After years of chronic pain, I finally found relief through their comprehensive treatment approach.",
-    name: "Sarah M.",
-    detail: "Neuropathy Patient",
+      "Dr. Jianxun Zhou is awesome; very professional, respectful, and honest. He listens to your needs. He took my workers' comp case and did a great job. I highly recommend him.",
   },
   {
     quote:
-      "Dr. Chen took the time to explain my condition thoroughly and developed a treatment plan that actually worked. I couldn't be more grateful.",
-    name: "Robert K.",
-    detail: "Joint Pain Patient",
+      "Finally, someone who listened to me and diagnosed my condition. I wish I had come to him five years ago.",
   },
   {
     quote:
-      "From my first visit, I felt heard and cared for. The staff is professional, knowledgeable, and genuinely compassionate.",
-    name: "Maria L.",
-    detail: "Carpal Tunnel Patient",
+      "I had been in pain for 18 months, and Dr. Zhou pinpointed the cause. He showed me on the X-rays and an old CT scan, then gave me options for treatment. What a relief to finally get help.",
+  },
+  {
+    quote:
+      "Dr. Zhou seemed genuinely concerned about my problem and was eager to help. I have confidence in him. Very professional. I also loved the staff; everyone was so kind.",
+  },
+  {
+    quote:
+      "I can't say enough great things about my care. I'm forever grateful for the opportunity to meet Dr. Zhou and his wonderful staff — no bad experiences at all.",
+  },
+  {
+    quote:
+      "Dr. Zhou is a very considerate and dedicated doctor. He's polite and truly makes you feel that he cares about getting you better. I highly recommend him.",
   },
 ];
 
@@ -98,19 +87,22 @@ export default function Home() {
       <section className="relative bg-gradient-to-br from-teal-dark via-teal to-teal/90 text-white">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-40">
+          <p className="text-sm font-semibold text-gold uppercase tracking-wider mb-4">
+            Jianxun Zhou, M.D. PhD QME
+          </p>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight max-w-3xl">
-            Advanced Care for Nerve &amp; Joint Conditions
+            Where Expertise Meets Compassion
           </h1>
           <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
-            Expert diagnosis and personalized treatment plans to help you
-            regain mobility, reduce pain, and improve your quality of life.
+            Your Health, Our Priority. Expert diagnosis and personalized
+            treatment for nerve and musculoskeletal conditions.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
             >
-              Book an Appointment
+              Schedule Consultation
             </Link>
             <Link
               href="/about"
@@ -119,33 +111,36 @@ export default function Home() {
               Learn More
             </Link>
           </div>
+          <p className="mt-10 text-sm text-white/70">
+            1001 Nut Tree Road, Suite 110, Vacaville, CA 95687
+          </p>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Patients Trust Dr. Zhou */}
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-            Why Choose Us
+            Why Patients Trust Dr. Zhou
           </h2>
           <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-            We combine medical expertise with compassionate care to deliver
-            outstanding results for our patients.
+            Precision neuromuscular care with a compassionate, patient-first
+            approach.
           </p>
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {whyTrust.map((item) => (
               <div
-                key={feature.title}
+                key={item.title}
                 className="rounded-xl bg-slate-50 p-8 text-left hover:shadow-md transition-shadow"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-teal-light p-3">
-                  {feature.icon}
+                  {item.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800 font-sans">
-                  {feature.title}
+                  {item.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
-                  {feature.description}
+                  {item.description}
                 </p>
               </div>
             ))}
@@ -160,10 +155,10 @@ export default function Home() {
             Our Services
           </h2>
           <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-            Comprehensive diagnostic and treatment services for a wide range
-            of nerve and joint conditions.
+            Comprehensive diagnostic and treatment services for nerve and
+            musculoskeletal conditions.
           </p>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <Link
                 key={service.title}
@@ -185,31 +180,43 @@ export default function Home() {
       {/* Doctor Teaser */}
       <section className="bg-white py-20 px-6">
         <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-2 items-center">
-          <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-teal-light to-teal/20 flex items-end justify-center overflow-hidden">
-            <div className="w-48 h-64 bg-teal/20 rounded-t-full" />
+          <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-teal-light to-teal/20 overflow-hidden relative">
+            <Image
+              src="/dr-zhou.png"
+              alt="Dr. Jianxun Zhou"
+              fill
+              className="object-cover object-top"
+            />
           </div>
           <div>
             <p className="text-sm font-semibold text-gold uppercase tracking-wider">
               Meet Your Specialist
             </p>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-800">
-              Dr. James Chen, MD
+              Jianxun Zhou, M.D. PhD QME
             </h2>
             <p className="mt-2 text-muted font-medium">
-              Board-Certified Neurologist &amp; Pain Management Specialist
+              Diplomate, American Board of Physical Medicine &amp;
+              Rehabilitation
+            </p>
+            <p className="text-muted font-medium">
+              Diplomate, American Board of Electrodiagnostic Medicine
+            </p>
+            <p className="text-muted font-medium">
+              Fellowship Trained in Electrodiagnostic Medicine &amp;
+              Interventional Pain
             </p>
             <p className="mt-6 text-muted leading-relaxed">
-              With over 15 years of experience in diagnosing and treating
-              complex nerve and joint conditions, Dr. Chen is dedicated to
-              providing the highest standard of care. His approach combines
-              cutting-edge diagnostic techniques with personalized treatment
-              plans tailored to each patient&apos;s unique needs.
+              Looking for expert diagnosis and treatment of nerve and
+              musculoskeletal issues? Dr. Zhou specializes in EMG and
+              musculoskeletal medicine, offering personalized care to help you
+              move and feel better.
             </p>
             <Link
               href="/about"
               className="mt-8 inline-flex items-center gap-2 text-teal font-semibold hover:text-teal-dark transition-colors"
             >
-              Learn more about Dr. Chen
+              Learn more about Dr. Zhou
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -218,28 +225,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Patient Stories */}
       <section className="bg-teal-light py-20 px-6">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-            What Our Patients Say
+            Patient Stories
           </h2>
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {testimonials.map((t) => (
+          <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
               <div
-                key={t.name}
+                key={i}
                 className="rounded-xl bg-white p-8 text-left shadow-sm"
               >
-                <div className="text-gold text-3xl leading-none mb-3">&ldquo;</div>
+                <div className="text-gold text-3xl leading-none mb-3">
+                  &ldquo;
+                </div>
                 <p className="text-sm text-muted leading-relaxed italic">
                   {t.quote}
                 </p>
-                <div className="mt-6 border-t pt-4">
-                  <p className="font-semibold text-slate-800 text-sm font-sans">
-                    {t.name}
-                  </p>
-                  <p className="text-xs text-muted">{t.detail}</p>
-                </div>
               </div>
             ))}
           </div>
@@ -250,18 +253,26 @@ export default function Home() {
       <section className="bg-teal py-16 px-6 text-center text-white">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold">
-            Ready to Take the First Step?
+            Start Your Recovery Today
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            Schedule your consultation today and start your journey to better
-            health.
+            Don&apos;t let pain limit your life. Book a consultation with Dr.
+            Zhou and experience expert care tailored to your needs.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
-          >
-            Request an Appointment
-          </Link>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
+            >
+              Schedule Consultation
+            </Link>
+            <a
+              href="tel:9167410848"
+              className="inline-flex items-center justify-center rounded-md border-2 border-white/30 px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              Call (916) 741-0848
+            </a>
+          </div>
         </div>
       </section>
     </>

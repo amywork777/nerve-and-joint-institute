@@ -4,15 +4,26 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Patient Resources | Nerve and Joint Institute",
   description:
-    "Find new patient information, insurance details, and answers to frequently asked questions.",
+    "Find insurance information and answers to frequently asked questions at Nerve and Joint Institute.",
 };
+
+const insurances = [
+  "Anthem Blue Cross",
+  "Blue Shield",
+  "Hill Physician",
+  "Medicare",
+  "UnitedHealthcare",
+  "Aetna",
+  "Workers' Compensation",
+  "Personal Injury Claims",
+];
 
 const steps = [
   {
     number: "01",
     title: "Schedule Your Visit",
     description:
-      "Contact our office by phone or use our online appointment request form to schedule your initial consultation.",
+      "Call us at (916) 741-0848 or use our online form to schedule your consultation with Dr. Zhou.",
   },
   {
     number: "02",
@@ -24,7 +35,7 @@ const steps = [
     number: "03",
     title: "Comprehensive Consultation",
     description:
-      "Dr. Chen will perform a thorough evaluation, review your medical history, and discuss your symptoms and concerns in detail.",
+      "Dr. Zhou will perform a thorough evaluation, review your medical history, and discuss your symptoms and concerns in detail.",
   },
   {
     number: "04",
@@ -34,21 +45,6 @@ const steps = [
   },
 ];
 
-const insurances = [
-  "Blue Cross Blue Shield",
-  "Aetna",
-  "UnitedHealthcare",
-  "Cigna",
-  "Medicare",
-  "Medicaid",
-  "Kaiser Permanente",
-  "Providence Health Plan",
-  "Pacific Source",
-  "Moda Health",
-  "Regence",
-  "Humana",
-];
-
 const faqs = [
   {
     question: "What should I bring to my first appointment?",
@@ -56,29 +52,29 @@ const faqs = [
       "Please bring a valid photo ID, your insurance card, a list of current medications, any relevant medical records or imaging studies, and a referral from your primary care physician if required by your insurance.",
   },
   {
-    question: "How long is a typical first visit?",
+    question: "Where are you located?",
     answer:
-      "Initial consultations typically last 45-60 minutes. This allows Dr. Chen to perform a thorough evaluation and discuss your treatment options in detail.",
+      "We are located at 1001 Nut Tree Road, Suite 110, Vacaville, CA 95687.",
   },
   {
-    question: "Do you accept walk-in appointments?",
+    question: "Do you accept workers' compensation cases?",
     answer:
-      "We see patients by appointment only to ensure adequate time for each visit. However, we do our best to accommodate urgent cases as quickly as possible.",
+      "Yes, Dr. Zhou has extensive experience with workers' compensation cases and personal injury claims. Contact our office to discuss your specific situation.",
   },
   {
-    question: "What is an EMG/Nerve Conduction Study?",
+    question: "What is an EMG test?",
     answer:
-      "An EMG (electromyography) measures the electrical activity in your muscles, while a nerve conduction study measures how fast electrical signals travel through your nerves. Together, these tests help diagnose conditions affecting your nerves and muscles.",
+      "An EMG (electromyography) measures the electrical activity in your muscles and nerves. It helps diagnose conditions like nerve compressions, peripheral neuropathy, radiculopathy, and muscle disorders. Dr. Zhou is a Diplomate of the American Board of Electrodiagnostic Medicine.",
   },
   {
-    question: "Will my insurance cover the treatment?",
+    question: "What conditions does Dr. Zhou treat?",
     answer:
-      "Most major insurance plans are accepted. Our billing team will verify your coverage before your visit and discuss any out-of-pocket costs with you in advance.",
+      "Dr. Zhou treats a wide range of conditions including nerve compressions (carpal tunnel, cubital tunnel), peripheral neuropathy, radiculopathy, muscle disorders, sports and overuse injuries, arthritis, joint pain, spinal stenosis, disc herniation, facet joint arthritis, and chronic pain.",
   },
   {
-    question: "How do I prepare for a nerve conduction study?",
+    question: "What services do you offer?",
     answer:
-      "Avoid applying lotions or creams to your arms and legs on the day of the test. Wear comfortable, loose-fitting clothing. You may eat and take your regular medications as normal unless otherwise instructed.",
+      "We offer regenerative medicine, electrodiagnostic medicine (EMG), BOTOX treatment, and rehabilitation services. Each treatment plan is personalized to your specific needs.",
   },
 ];
 
@@ -135,11 +131,10 @@ export default function ResourcesPage() {
               Insurance Accepted
             </h2>
             <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
-              We accept most major insurance plans. Contact us to verify your
-              specific coverage.
+              We currently accept the following plans.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
             {insurances.map((name) => (
               <div
                 key={name}
@@ -151,7 +146,10 @@ export default function ResourcesPage() {
           </div>
           <p className="mt-8 text-center text-sm text-muted">
             Don&apos;t see your insurance listed?{" "}
-            <Link href="/contact" className="text-teal font-medium hover:underline">
+            <Link
+              href="/contact"
+              className="text-teal font-medium hover:underline"
+            >
               Contact us
             </Link>{" "}
             to verify your coverage.
@@ -201,15 +199,18 @@ export default function ResourcesPage() {
       {/* CTA */}
       <section className="bg-teal py-16 px-6 text-center text-white">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold">Have More Questions?</h2>
+          <h2 className="text-3xl font-bold">
+            Start Your Journey to Better Living Today
+          </h2>
           <p className="mt-4 text-lg text-white/80">
-            Our team is here to help. Reach out to us anytime.
+            Call us at (916) 741-0848 or email info@nerveandjoint.com to
+            schedule your consultation.
           </p>
           <Link
             href="/contact"
             className="mt-8 inline-flex items-center justify-center rounded-md bg-gold px-8 py-3.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
           >
-            Contact Us
+            Get in Touch
           </Link>
         </div>
       </section>

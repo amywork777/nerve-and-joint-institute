@@ -15,8 +15,17 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-2xl font-serif font-bold text-teal">
-          Nerve &amp; Joint Institute
+        <Link href="/" className="flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-seal.svg"
+            alt="Nerve and Joint Institute"
+            width={44}
+            height={44}
+          />
+          <span className="text-xl font-serif font-bold text-teal hidden sm:inline">
+            Nerve &amp; Joint Institute
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -34,7 +43,7 @@ export default function Header() {
             href="/contact"
             className="rounded-md bg-gold px-5 py-2.5 text-sm font-semibold text-white hover:bg-gold/90 transition-colors"
           >
-            Request Appointment
+            Schedule Consultation
           </Link>
         </nav>
 
@@ -80,7 +89,7 @@ export default function Header() {
             className="mt-2 block rounded-md bg-gold px-5 py-2.5 text-center text-sm font-semibold text-white"
             onClick={() => setMobileOpen(false)}
           >
-            Request Appointment
+            Schedule Consultation
           </Link>
         </nav>
       )}

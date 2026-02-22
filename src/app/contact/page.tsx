@@ -2,11 +2,13 @@
 
 import { useState, type FormEvent } from "react";
 
-const reasons = ["New Patient", "Follow-Up", "Second Opinion", "Other"];
+const reasons = ["New Patient", "Follow-Up", "Second Opinion", "Workers' Compensation", "Personal Injury", "Other"];
 const times = ["Morning (8am–12pm)", "Afternoon (12pm–5pm)", "No Preference"];
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,7 +21,9 @@ export default function ContactPage() {
   });
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -47,9 +51,10 @@ export default function ContactPage() {
       {/* Hero Banner */}
       <section className="bg-gradient-to-r from-teal-dark to-teal py-20 px-6 text-white">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-4xl md:text-5xl font-bold">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">Get in Touch</h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl">
-            Request an appointment or get in touch with our team.
+            Start your journey to better living today. Schedule a consultation
+            with Dr. Zhou.
           </p>
         </div>
       </section>
@@ -59,7 +64,7 @@ export default function ContactPage() {
           {/* Form */}
           <div className="lg:col-span-2">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
-              Request an Appointment
+              Schedule a Consultation
             </h2>
             <p className="mt-2 text-muted text-sm">
               Fill out the form below and our team will contact you to confirm
@@ -73,7 +78,7 @@ export default function ContactPage() {
                   Thank You!
                 </h3>
                 <p className="mt-2 text-muted text-sm">
-                  Your appointment request has been submitted. Our team will
+                  Your consultation request has been submitted. Our team will
                   contact you within 1 business day to confirm your
                   appointment.
                 </p>
@@ -243,7 +248,7 @@ export default function ContactPage() {
                 {status === "error" && (
                   <div className="rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
                     Something went wrong. Please try again or call our office
-                    directly.
+                    directly at (916) 741-0848.
                   </div>
                 )}
 
@@ -254,7 +259,7 @@ export default function ContactPage() {
                 >
                   {status === "sending"
                     ? "Submitting..."
-                    : "Submit Appointment Request"}
+                    : "Submit Consultation Request"}
                 </button>
               </form>
             )}
@@ -266,33 +271,22 @@ export default function ContactPage() {
               <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
                 Office Location
               </h3>
-              <div className="aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center text-muted text-sm mb-4">
-                <div className="text-center">
-                  <svg
-                    className="w-8 h-8 mx-auto mb-2 text-slate-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                    />
-                  </svg>
-                  Map Placeholder
-                </div>
+              <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+                <iframe
+                  title="Nerve and Joint Institute Location"
+                  src="https://maps.google.com/maps?q=1001+Nut+Tree+Rd+Suite+110,+Vacaville,+CA+95687&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
               <p className="text-sm text-muted leading-relaxed">
-                123 Medical Center Drive, Suite 200
+                1001 Nut Tree Road, Suite 110
                 <br />
-                Portland, OR 97201
+                Vacaville, CA 95687
               </p>
             </div>
 
@@ -303,15 +297,15 @@ export default function ContactPage() {
               <ul className="space-y-2 text-sm text-muted">
                 <li>
                   <span className="font-medium text-slate-700">Phone:</span>{" "}
-                  (503) 555-0100
+                  <a href="tel:9167410848" className="hover:text-teal">(916) 741-0848</a>
                 </li>
                 <li>
                   <span className="font-medium text-slate-700">Fax:</span>{" "}
-                  (503) 555-0101
+                  800-268-8044
                 </li>
                 <li>
                   <span className="font-medium text-slate-700">Email:</span>{" "}
-                  info@nerveandjoint.com
+                  <a href="mailto:info@nerveandjoint.com" className="hover:text-teal">info@nerveandjoint.com</a>
                 </li>
               </ul>
             </div>
