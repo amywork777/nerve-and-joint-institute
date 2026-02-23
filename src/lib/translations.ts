@@ -258,6 +258,7 @@ export const translations = {
   "insurance.aetna": { en: "Aetna", es: "Aetna" },
   "insurance.workers": { en: "Workers' Compensation", es: "Compensación Laboral" },
   "insurance.pi": { en: "Personal Injury Claims", es: "Reclamos por Lesiones Personales" },
+  "insurance.other": { en: "Other", es: "Otro" },
 
   "resources.faq.title": { en: "Frequently Asked Questions", es: "Preguntas Frecuentes" },
   "resources.faq1.q": { en: "What should I bring to my first appointment?", es: "¿Qué debo traer a mi primera cita?" },
@@ -313,6 +314,10 @@ export const translations = {
   "contact.form.lastName": { en: "Last Name", es: "Apellido" },
   "contact.form.email": { en: "Email", es: "Correo Electrónico" },
   "contact.form.phone": { en: "Phone", es: "Teléfono" },
+  "contact.form.insurance": { en: "Insurance Provider", es: "Proveedor de Seguro" },
+  "contact.form.insurancePlaceholder": { en: "Select your insurance...", es: "Seleccione su seguro..." },
+  "contact.form.memberId": { en: "Member / Policy ID", es: "ID de Miembro / Póliza" },
+  "contact.form.memberIdPlaceholder": { en: "Enter your member ID (optional)", es: "Ingrese su ID de miembro (opcional)" },
   "contact.form.reason": { en: "Reason for Visit", es: "Motivo de la Visita" },
   "contact.form.reasonPlaceholder": { en: "Select a reason...", es: "Seleccione un motivo..." },
   "contact.form.date": { en: "Preferred Date", es: "Fecha Preferida" },

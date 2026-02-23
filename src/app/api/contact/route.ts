@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
-    const { firstName, lastName, email, phone, reason, date, time, notes } =
+    const { firstName, lastName, email, phone, insurance, memberId, reason, date, time, notes } =
       body;
 
     if (!firstName || !lastName || !email) {
@@ -34,6 +34,14 @@ export async function POST(request: Request) {
           <tr style="border-bottom:1px solid #eee">
             <td style="padding:12px 8px;font-weight:bold;color:#334155">Phone</td>
             <td style="padding:12px 8px;color:#475569">${phone || "Not provided"}</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee">
+            <td style="padding:12px 8px;font-weight:bold;color:#334155">Insurance</td>
+            <td style="padding:12px 8px;color:#475569">${insurance || "Not provided"}</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee">
+            <td style="padding:12px 8px;font-weight:bold;color:#334155">Member ID</td>
+            <td style="padding:12px 8px;color:#475569">${memberId || "Not provided"}</td>
           </tr>
           <tr style="border-bottom:1px solid #eee">
             <td style="padding:12px 8px;font-weight:bold;color:#334155">Reason</td>

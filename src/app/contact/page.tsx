@@ -13,11 +13,25 @@ export default function ContactPage() {
     lastName: "",
     email: "",
     phone: "",
+    insurance: "",
+    memberId: "",
     reason: "",
     date: "",
     time: "",
     notes: "",
   });
+
+  const insuranceProviders = [
+    { key: "insurance.anthem" as const, value: "Anthem Blue Cross" },
+    { key: "insurance.blueShield" as const, value: "Blue Shield" },
+    { key: "insurance.hill" as const, value: "Hill Physician" },
+    { key: "insurance.medicare" as const, value: "Medicare" },
+    { key: "insurance.united" as const, value: "UnitedHealthcare" },
+    { key: "insurance.aetna" as const, value: "Aetna" },
+    { key: "insurance.workers" as const, value: "Workers' Compensation" },
+    { key: "insurance.pi" as const, value: "Personal Injury Claims" },
+    { key: "insurance.other" as const, value: "Other" },
+  ];
 
   const reasons = [
     { key: "reason.newPatient" as const, value: "New Patient" },
@@ -165,6 +179,49 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* Insurance */}
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="insurance"
+                      className="block text-sm font-medium text-slate-700 mb-1.5"
+                    >
+                      {t("contact.form.insurance")}
+                    </label>
+                    <select
+                      id="insurance"
+                      name="insurance"
+                      value={formData.insurance}
+                      onChange={handleChange}
+                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
+                    >
+                      <option value="">{t("contact.form.insurancePlaceholder")}</option>
+                      {insuranceProviders.map((ins) => (
+                        <option key={ins.value} value={ins.value}>
+                          {t(ins.key)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="memberId"
+                      className="block text-sm font-medium text-slate-700 mb-1.5"
+                    >
+                      {t("contact.form.memberId")}
+                    </label>
+                    <input
+                      type="text"
+                      id="memberId"
+                      name="memberId"
+                      value={formData.memberId}
+                      onChange={handleChange}
+                      placeholder={t("contact.form.memberIdPlaceholder")}
                       className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
                     />
                   </div>
