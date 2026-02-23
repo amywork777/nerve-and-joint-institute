@@ -12,16 +12,8 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative text-white overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1920&q=80"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-dark/95 via-teal/85 to-teal/80" />
+      <section className="relative bg-gradient-to-br from-teal-dark via-teal to-teal/90 text-white">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-40">
           <p className="text-2xl md:text-3xl font-serif font-bold text-white mb-2">
             Nerve &amp; Joint Institute
