@@ -135,7 +135,7 @@ export default function Home() {
                     src={condition.heroImage}
                     alt={t(condition.titleKey as TranslationKey)}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover grayscale group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

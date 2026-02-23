@@ -56,7 +56,7 @@ export default function ConditionPage() {
           src={condition.heroImage}
           alt=""
           fill
-          className="object-cover"
+          className="object-cover grayscale"
           priority
           sizes="100vw"
         />

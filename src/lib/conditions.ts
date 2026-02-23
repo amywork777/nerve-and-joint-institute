@@ -48,7 +48,7 @@ export const conditions: Condition[] = [
     diagnosisKey: "cond.shoulder.diagnosis",
     treatmentKey: "cond.shoulder.treatment",
     icon: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z",
-    heroImage: "https://images.unsplash.com/photo-1715532176260-78302f560fa6?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "https://images.unsplash.com/photo-1633619641912-02cff8a1333d?auto=format&fit=crop&w=1920&q=80",
   },
   {
     slug: "osteoarthritis",
