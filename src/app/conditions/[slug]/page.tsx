@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useLanguage } from "@/lib/language-context";
@@ -49,34 +50,45 @@ export default function ConditionPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-teal-dark to-teal py-16 px-6 text-white">
-        <div className="mx-auto max-w-4xl">
-          <Link
-            href="/about#conditions"
-            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-6"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
+      {/* Hero with background image */}
+      <section className="relative overflow-hidden text-white">
+        <Image
+          src={condition.heroImage}
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-dark/90 to-teal/80" />
+        <div className="relative py-20 md:py-28 px-6">
+          <div className="mx-auto max-w-4xl">
+            <Link
+              href="/about#conditions"
+              className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-6"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-              />
-            </svg>
-            {t("conditions.detail.back" as TranslationKey)}
-          </Link>
-          <h1 className="text-3xl md:text-5xl font-bold">
-            {t(condition.titleKey as TranslationKey)}
-          </h1>
-          <p className="mt-4 text-lg text-white/80 max-w-3xl leading-relaxed">
-            {t(condition.shortDescKey as TranslationKey)}
-          </p>
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                />
+              </svg>
+              {t("conditions.detail.back" as TranslationKey)}
+            </Link>
+            <h1 className="text-3xl md:text-5xl font-bold">
+              {t(condition.titleKey as TranslationKey)}
+            </h1>
+            <p className="mt-4 text-lg text-white/80 max-w-3xl leading-relaxed">
+              {t(condition.shortDescKey as TranslationKey)}
+            </p>
+          </div>
         </div>
       </section>
 
