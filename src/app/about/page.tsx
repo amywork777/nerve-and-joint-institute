@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
+import { conditions as conditionData } from "@/lib/conditions";
+import type { TranslationKey } from "@/lib/translations";
 
 export default function AboutPage() {
   const { t } = useLanguage();
@@ -11,19 +14,6 @@ export default function AboutPage() {
     { titleKey: "service.emg.title" as const, descKey: "about.service.emg.desc" as const },
     { titleKey: "service.botox.title" as const, descKey: "about.service.botox.desc" as const },
     { titleKey: "service.rehab.title" as const, descKey: "about.service.rehab.desc" as const },
-  ];
-
-  const conditions = [
-    "condition.nerve" as const,
-    "condition.neuropathy" as const,
-    "condition.radiculopathy" as const,
-    "condition.muscle" as const,
-    "condition.sports" as const,
-    "condition.arthritis" as const,
-    "condition.stenosis" as const,
-    "condition.disc" as const,
-    "condition.facet" as const,
-    "condition.chronic" as const,
   ];
 
   const credentials = [
@@ -183,25 +173,55 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Conditions Treated */}
+      {/* Conditions We Treat */}
       <section
         id="conditions"
         className="bg-teal-light py-20 px-6 scroll-mt-20"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              {t("about.conditions.title")}
+              {t("conditions.section.title" as TranslationKey)}
             </h2>
+            <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
+              {t("conditions.section.subtitle" as TranslationKey)}
+            </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {conditions.map((key) => (
-              <div
-                key={key}
-                className="rounded-lg bg-white px-5 py-4 text-sm font-medium text-slate-700 shadow-sm hover:shadow-md transition-shadow"
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {conditionData.map((condition) => (
+              <Link
+                key={condition.slug}
+                href={`/conditions/${condition.slug}`}
+                className="rounded-xl bg-white p-6 shadow-sm hover:shadow-md transition-all group"
               >
-                {t(key)}
-              </div>
+                <div className="w-9 h-9 rounded-lg bg-teal-light flex items-center justify-center mb-3 group-hover:bg-teal/10 transition-colors">
+                  <svg
+                    className="w-5 h-5 text-teal"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d={condition.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-base font-semibold text-slate-800 group-hover:text-teal transition-colors font-sans">
+                  {t(condition.titleKey as TranslationKey)}
+                </h3>
+                <p className="mt-1.5 text-sm text-muted leading-relaxed line-clamp-2">
+                  {t(condition.shortDescKey as TranslationKey)}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-teal">
+                  {t("conditions.section.learnMore" as TranslationKey)}
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </Link>
             ))}
           </div>
         </div>

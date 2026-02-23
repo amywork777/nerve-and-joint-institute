@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
+import { conditions } from "@/lib/conditions";
+import type { TranslationKey } from "@/lib/translations";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -109,6 +111,49 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Conditions We Treat */}
+      <section className="bg-white py-20 px-6">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
+            {t("conditions.section.title" as TranslationKey)}
+          </h2>
+          <p className="mt-4 text-lg text-muted max-w-2xl mx-auto">
+            {t("conditions.section.subtitle" as TranslationKey)}
+          </p>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {conditions.slice(0, 4).map((condition) => (
+              <Link
+                key={condition.slug}
+                href={`/conditions/${condition.slug}`}
+                className="rounded-xl bg-slate-50 p-6 text-left hover:shadow-md transition-shadow group"
+              >
+                <h3 className="text-base font-semibold text-slate-800 group-hover:text-teal transition-colors font-sans">
+                  {t(condition.titleKey as TranslationKey)}
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed line-clamp-2">
+                  {t(condition.shortDescKey as TranslationKey)}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-teal">
+                  {t("conditions.section.learnMore" as TranslationKey)}
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <Link
+            href="/about#conditions"
+            className="mt-8 inline-flex items-center gap-2 text-teal font-semibold hover:text-teal-dark transition-colors"
+          >
+            {t("conditions.detail.back" as TranslationKey)}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
         </div>
       </section>
 
