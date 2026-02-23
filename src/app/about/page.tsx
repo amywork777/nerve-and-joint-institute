@@ -192,35 +192,32 @@ export default function AboutPage() {
               <Link
                 key={condition.slug}
                 href={`/conditions/${condition.slug}`}
-                className="rounded-xl bg-white p-6 shadow-sm hover:shadow-md transition-all group"
+                className="rounded-xl bg-white shadow-sm hover:shadow-md transition-all group overflow-hidden"
               >
-                <div className="w-9 h-9 rounded-lg bg-teal-light flex items-center justify-center mb-3 group-hover:bg-teal/10 transition-colors">
-                  <svg
-                    className="w-5 h-5 text-teal"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d={condition.icon}
-                    />
-                  </svg>
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
+                    src={condition.heroImage}
+                    alt={t(condition.titleKey as TranslationKey)}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <h3 className="text-base font-semibold text-slate-800 group-hover:text-teal transition-colors font-sans">
-                  {t(condition.titleKey as TranslationKey)}
-                </h3>
-                <p className="mt-1.5 text-sm text-muted leading-relaxed line-clamp-2">
-                  {t(condition.shortDescKey as TranslationKey)}
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-teal">
-                  {t("conditions.section.learnMore" as TranslationKey)}
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </span>
+                <div className="p-5">
+                  <h3 className="text-base font-semibold text-slate-800 group-hover:text-teal transition-colors font-sans">
+                    {t(condition.titleKey as TranslationKey)}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-muted leading-relaxed line-clamp-2">
+                    {t(condition.shortDescKey as TranslationKey)}
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-teal">
+                    {t("conditions.section.learnMore" as TranslationKey)}
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
