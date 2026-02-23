@@ -10,10 +10,30 @@ export default function AboutPage() {
   const { t } = useLanguage();
 
   const services = [
-    { titleKey: "service.regen.title" as const, descKey: "about.service.regen.desc" as const },
-    { titleKey: "service.emg.title" as const, descKey: "about.service.emg.desc" as const },
-    { titleKey: "service.botox.title" as const, descKey: "about.service.botox.desc" as const },
-    { titleKey: "service.rehab.title" as const, descKey: "about.service.rehab.desc" as const },
+    {
+      titleKey: "service.regen.title" as const,
+      descKey: "about.service.regen.desc" as const,
+      // DNA helix
+      icon: "M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-1.341 4.024A2.25 2.25 0 0115.5 20.25H8.5a2.25 2.25 0 01-2.159-1.726L5 14.5m14 0H5",
+    },
+    {
+      titleKey: "service.emg.title" as const,
+      descKey: "about.service.emg.desc" as const,
+      // Lightning bolt
+      icon: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
+    },
+    {
+      titleKey: "service.botox.title" as const,
+      descKey: "about.service.botox.desc" as const,
+      // Syringe/eyedropper
+      icon: "M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    },
+    {
+      titleKey: "service.rehab.title" as const,
+      descKey: "about.service.rehab.desc" as const,
+      // Heart with pulse
+      icon: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z",
+    },
   ];
 
   const credentials = [
@@ -157,7 +177,7 @@ export default function AboutPage() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
+                      d={service.icon}
                     />
                   </svg>
                 </div>
