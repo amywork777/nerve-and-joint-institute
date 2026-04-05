@@ -1,78 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/lib/language-context";
 
 export default function ContactPage() {
   const { t } = useLanguage();
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    insurance: "",
-    memberId: "",
-    reason: "",
-    date: "",
-    time: "",
-    notes: "",
-  });
-
-  const insuranceProviders = [
-    { key: "insurance.anthem" as const, value: "Anthem Blue Cross" },
-    { key: "insurance.blueShield" as const, value: "Blue Shield" },
-    { key: "insurance.hill" as const, value: "Hill Physician" },
-    { key: "insurance.medicare" as const, value: "Medicare" },
-    { key: "insurance.united" as const, value: "UnitedHealthcare" },
-    { key: "insurance.aetna" as const, value: "Aetna" },
-    { key: "insurance.workers" as const, value: "Workers' Compensation" },
-    { key: "insurance.pi" as const, value: "Personal Injury Claims" },
-    { key: "insurance.other" as const, value: "Other" },
-  ];
-
-  const reasons = [
-    { key: "reason.newPatient" as const, value: "New Patient" },
-    { key: "reason.followUp" as const, value: "Follow-Up" },
-    { key: "reason.secondOpinion" as const, value: "Second Opinion" },
-    { key: "reason.workersComp" as const, value: "Workers' Compensation" },
-    { key: "reason.personalInjury" as const, value: "Personal Injury" },
-    { key: "reason.other" as const, value: "Other" },
-  ];
-
-  const times = [
-    { key: "time.morning" as const, value: "Morning (8am–12pm)" },
-    { key: "time.afternoon" as const, value: "Afternoon (12pm–5pm)" },
-    { key: "time.noPref" as const, value: "No Preference" },
-  ];
-
-  function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!res.ok) throw new Error("Failed to send");
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    }
-  }
 
   return (
     <>
@@ -87,275 +18,33 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-white py-20 px-6">
-        <div className="mx-auto max-w-7xl grid gap-16 lg:grid-cols-3">
-          {/* Form */}
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
-              {t("contact.form.title")}
-            </h2>
-            <p className="mt-2 text-muted text-sm">
-              {t("contact.form.subtitle")}
+        <div className="mx-auto max-w-4xl grid gap-12 md:grid-cols-2">
+          {/* Map + Address */}
+          <div>
+            <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
+              {t("contact.office.location")}
+            </h3>
+            <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+              <iframe
+                title="Nerve and Joint Institute Location"
+                src="https://maps.google.com/maps?q=1001+Nut+Tree+Rd+Suite+110,+Vacaville,+CA+95687&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <p className="text-sm text-muted leading-relaxed">
+              1001 Nut Tree Road, Suite 110
+              <br />
+              Vacaville, CA 95687
             </p>
-
-            {status === "success" ? (
-              <div className="mt-8 rounded-xl bg-teal-light border border-teal/20 p-8 text-center">
-                <div className="text-teal text-4xl mb-3">&#10003;</div>
-                <h3 className="text-xl font-semibold text-slate-800 font-sans">
-                  {t("contact.form.thankYou")}
-                </h3>
-                <p className="mt-2 text-muted text-sm">
-                  {t("contact.form.successMsg")}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                {/* Name row */}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.firstName")} <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.lastName")} <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Contact row */}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.email")} <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.phone")}
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Insurance */}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="insurance"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.insurance")}
-                    </label>
-                    <select
-                      id="insurance"
-                      name="insurance"
-                      value={formData.insurance}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
-                    >
-                      <option value="">{t("contact.form.insurancePlaceholder")}</option>
-                      {insuranceProviders.map((ins) => (
-                        <option key={ins.value} value={ins.value}>
-                          {t(ins.key)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="memberId"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.memberId")}
-                    </label>
-                    <input
-                      type="text"
-                      id="memberId"
-                      name="memberId"
-                      value={formData.memberId}
-                      onChange={handleChange}
-                      placeholder={t("contact.form.memberIdPlaceholder")}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Reason */}
-                <div>
-                  <label
-                    htmlFor="reason"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
-                  >
-                    {t("contact.form.reason")}
-                  </label>
-                  <select
-                    id="reason"
-                    name="reason"
-                    value={formData.reason}
-                    onChange={handleChange}
-                    className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
-                  >
-                    <option value="">{t("contact.form.reasonPlaceholder")}</option>
-                    {reasons.map((r) => (
-                      <option key={r.value} value={r.value}>
-                        {t(r.key)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Date/Time row */}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="date"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.date")}
-                    </label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="time"
-                      className="block text-sm font-medium text-slate-700 mb-1.5"
-                    >
-                      {t("contact.form.time")}
-                    </label>
-                    <select
-                      id="time"
-                      name="time"
-                      value={formData.time}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors bg-white"
-                    >
-                      <option value="">{t("contact.form.timePlaceholder")}</option>
-                      {times.map((ti) => (
-                        <option key={ti.value} value={ti.value}>
-                          {t(ti.key)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Notes */}
-                <div>
-                  <label
-                    htmlFor="notes"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
-                  >
-                    {t("contact.form.notes")}
-                  </label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows={4}
-                    value={formData.notes}
-                    onChange={handleChange}
-                    placeholder={t("contact.form.notesPlaceholder")}
-                    className="w-full rounded-md border border-slate-300 px-4 py-3 text-sm focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors resize-none"
-                  />
-                </div>
-
-                {status === "error" && (
-                  <div className="rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                    {t("contact.form.errorMsg")}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="w-full rounded-md bg-gold px-8 py-4 text-sm font-semibold text-white hover:bg-gold/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {status === "sending"
-                    ? t("contact.form.submitting")
-                    : t("contact.form.submit")}
-                </button>
-              </form>
-            )}
           </div>
 
-          {/* Office Info */}
+          {/* Contact Info + Hours */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
-                {t("contact.office.location")}
-              </h3>
-              <div className="aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                <iframe
-                  title="Nerve and Joint Institute Location"
-                  src="https://maps.google.com/maps?q=1001+Nut+Tree+Rd+Suite+110,+Vacaville,+CA+95687&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-              <p className="text-sm text-muted leading-relaxed">
-                1001 Nut Tree Road, Suite 110
-                <br />
-                Vacaville, CA 95687
-              </p>
-            </div>
-
             <div>
               <h3 className="text-lg font-semibold text-slate-800 font-sans mb-3">
                 {t("contact.office.info")}
